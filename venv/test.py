@@ -21,7 +21,7 @@ class_names = np.array([key.title() for key, value in class_names])
 
 result = model.predict(img)
 print(result)
-# ans = np.argmax(result)
+ans = np.argmax(result)
 
 print("Given Image ",img_url.split('/')[-1])
 print("Predicated value ",class_names[ans])
