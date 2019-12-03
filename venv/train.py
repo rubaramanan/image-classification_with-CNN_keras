@@ -1,5 +1,6 @@
 from tensorflow import keras
 import tensorflow as tf
+import tensorflow_hub as hub
 from tensorflow.keras.preprocessing.image import ImageDataGenerator,img_to_array,load_img
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten,Dense,Conv2D,MaxPooling2D,Dropout,Activation,InputLayer
@@ -28,7 +29,6 @@ print(train_image_data)
 
 model = Sequential()
 
-# model.add(InputLayer(input_shape=(150,150,3)))
 
 model.add(Conv2D(32,(3,3),input_shape=(150, 150, 3)))
 model.add(Activation('relu'))
@@ -52,9 +52,9 @@ model.add(Activation('softmax'))
 print(model.summary())
 print(model.output_shape)
 
-#  compile model
+#  compile model categorical_crossentropy
 model.compile(
-    loss='binary_crossentropy',
+    loss='categorical_crossentropy',
     optimizer='adam',
     metrices=['accuracy']
 )
